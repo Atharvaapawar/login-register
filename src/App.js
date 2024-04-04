@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Preloader from "./components/Preloader";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import BGvideo2 from "./components/BGvideo2.mp4";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="main">
+        <video
+          className="video"
+          src={BGvideo2}
+          autoPlay
+          loop
+          muted
+          playbackRate={0.2}
+        />
+        <div className="content">
+          <Navbar />
+          <Preloader />
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
